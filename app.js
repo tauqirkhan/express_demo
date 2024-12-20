@@ -12,6 +12,10 @@ const links = [
 
 const users = ["Rose", "Cake", "Biff"];
 
+const assetPath = path.join(__dirname, "public");
+
+app.use(express.static(assetPath));
+
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "ejs");
 
