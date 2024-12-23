@@ -12,6 +12,9 @@ const links = [
 
 const users = ["Rose", "Cake", "Biff"];
 
+const about =
+  "This is about page and the text you are reading was made using ejs template engine";
+
 const assetPath = path.join(__dirname, "public");
 
 app.use(express.static(assetPath));
@@ -29,6 +32,10 @@ app.use((err, req, res, next) => {
 
 app.get("/ejs", (req, res) => {
   res.render("index", { links: links, users: users });
+});
+
+app.get("/about", (req, res) => {
+  res.render("about", { about: about });
 });
 
 const PORT = process.env.PORT || 3000;
