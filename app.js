@@ -8,6 +8,7 @@ const path = require("node:path");
 const links = [
   { href: "/", text: "Home" },
   { href: "/author", text: "Author" },
+  { href: "/about", text: "About" },
 ];
 
 const users = ["Rose", "Cake", "Biff"];
@@ -22,20 +23,20 @@ app.use(express.static(assetPath));
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "ejs");
 
-app.use("/author", authorRouter);
-app.use("/books", bookRouter);
-app.use("/", indexRouter);
-app.use((err, req, res, next) => {
-  console.error(err);
-  res.status(err.statusCode || 500).send(err.message);
-});
-
 app.get("/ejs", (req, res) => {
   res.render("index", { links: links, users: users });
 });
 
 app.get("/about", (req, res) => {
   res.render("about", { about: about });
+});
+
+app.use("/author", authorRouter);
+app.use("/books", bookRouter);
+app.use("/", indexRouter);
+app.use((err, req, res, next) => {
+  console.error(err);
+  res.status(err.statusCode || 500).send(err.message);
 });
 
 const PORT = process.env.PORT || 3000;

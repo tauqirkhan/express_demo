@@ -4,10 +4,11 @@
     <link rel="stylesheet" href="/styles.css" />
   </head>
   <body>
-    <%- include('navbar', {links: links}) %>
+    <%- include('navbar/navbar', {links: links}) %>
     <ul>
       <% users.forEach((user) => { %> <%- include('users/user', {user: user}) %>
       <% }); %>
     </ul>
+    <%- include('footer/footer', {footerContent: "Homepage Footer"}) %>
   </body>
 </html>
